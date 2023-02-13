@@ -23,15 +23,15 @@ impl<'a> InstanceT<'a> {
     pub(crate) fn new(
         context_stack: &'a ParseContextStackT,
         context: &'a ParseContextT,
-        // instance_t *           _parent = NULL,
-        // const bool             _no_assertions = false
+        _parent: Option<InstanceT>,     // default: NULL
+        _no_assertions: bool            // const, = false
     ) -> Self {
         Self { context_stack, context }
     }
 
     pub(crate) fn parse(&self) {
         //     INFO("Parsing file " << context.pathname);
-        //todo: log::info!("Parsing file {}", self.context.pathname);
+        //log::info!("Parsing file {}", self.context.pathname);
 
         //     TRACE_START(instance_parse, 1, "Done parsing file " << context.pathname);
 
@@ -95,5 +95,9 @@ impl<'a> InstanceT<'a> {
         //   #endif // TIMELOG_SUPPORT
 
         //     TRACE_STOP(instance_parse, 1);
+    }
+
+    pub(crate) fn description() -> String {
+        "textual parser".to_owned()
     }
 }

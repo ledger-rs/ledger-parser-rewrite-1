@@ -3,7 +3,10 @@
  */
 
 /// parse_context_t
-pub(crate) struct ParseContextT {}
+pub(crate) struct ParseContextT {
+    // static
+    // const MAX_LINE: usize = 4096;
+}
 
 /// parse_context_stack_t
 pub(crate) struct ParseContextStackT {
