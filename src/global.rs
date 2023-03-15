@@ -5,13 +5,13 @@ global.h
 
 */
 
-pub struct GlobalScopeT {
+pub struct GlobalScopeT<'a> {
     // shared_ptr<session_t> session_ptr;
-    session_ptr: SessionT
+    session_ptr: SessionT<'a>
 
 }
 
-impl GlobalScopeT {
+impl GlobalScopeT<'_> {
     pub fn new() -> Self {
 //   epoch = CURRENT_TIME();
 

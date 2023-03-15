@@ -5,19 +5,23 @@ Session
  */
 use crate::{account::AccountT, context::ParseContextStackT, journal::JournalT};
 
-pub struct SessionT {
+pub struct SessionT<'a> {
     // unique_ptr<journal_t> journal;
-    journal: JournalT,
+    journal: JournalT<'a>,
     // parse_context_stack_t parsing_context;
-    parsing_context: ParseContextStackT,
+    parsing_context: ParseContextStackT<'a>,
 
     // Options
     data_files: Vec<PathBuf>,
 }
 
-impl SessionT {
+impl SessionT<'_> {
     pub fn new() -> Self {
-        Self { journal: JournalT::new(), parsing_context: (), data_files: () }
+        Self {
+            journal: JournalT::new(),
+            parsing_context: ParseContextStackT::new(),
+            data_files: vec![],
+        }
     }
 
     //   journal_t * read_journal(const path& pathname);

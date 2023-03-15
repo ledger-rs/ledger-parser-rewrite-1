@@ -40,6 +40,10 @@ pub struct ParseContextStackT<'a> {
 }
 
 impl ParseContextStackT<'_> {
+    pub fn new() -> Self {
+        Self { parsing_context: vec![] }
+    }
+    
     pub fn get_current(&self) -> &ParseContextT {
         //assert(! parsing_context.empty());
         assert!(!self.parsing_context.is_empty());

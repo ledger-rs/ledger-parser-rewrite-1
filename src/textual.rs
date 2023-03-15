@@ -7,9 +7,9 @@ use crate::context::{ParseContextStackT, ParseContextT};
 /// instance_t
 pub(crate) struct InstanceT<'a> {
     // parse_context_stack_t&   context_stack;
-    context_stack: &'a ParseContextStackT,
+    context_stack: &'a ParseContextStackT<'a>,
     // parse_context_t&         context;
-    context: &'a ParseContextT,
+    context: &'a ParseContextT<'a>,
     // std::istream&            in;
     // instance_t *             parent;
     // std::list<application_t> apply_stack;
