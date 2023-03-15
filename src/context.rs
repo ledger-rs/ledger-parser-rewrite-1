@@ -9,7 +9,7 @@ use crate::journal::JournalT;
 const MAX_LINE: usize = 4096;
 
 /// parse_context_t
-pub(crate) struct ParseContextT {
+pub struct ParseContextT {
     // static const MAX_LINE: usize = 4096;
 
     // shared_ptr<std::istream> stream;
@@ -35,7 +35,7 @@ pub(crate) struct ParseContextT {
 }
 
 /// parse_context_stack_t
-pub(crate) struct ParseContextStackT {
+pub struct ParseContextStackT {
     parsing_context: Vec<ParseContextT>
 }
 

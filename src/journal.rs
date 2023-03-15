@@ -5,10 +5,10 @@
 use crate::{context::{ParseContextT, ParseContextStackT}, textual::InstanceT};
 
 ///journal_t
-pub(crate) struct JournalT {}
+pub struct JournalT {}
 
 impl JournalT {
-    pub fn read(context: &ParseContextStackT) -> usize {
+    pub fn read(&self, context: &ParseContextStackT) -> usize {
         let mut count: usize = 0;
 
         //let current: ParseContextT(context.get_current());
@@ -26,13 +26,14 @@ pub(crate) fn read_textual(context_stack: &ParseContextStackT) -> usize {
     // {
     //   instance_t instance(context_stack, context_stack.get_current(), NULL,
     //                       checking_style == journal_t::CHECK_PERMISSIVE);
-    
     let instance: InstanceT;
+    // temporary init
+    instance = InstanceT::new(context_stack, context_stack.get_current(), None, false);
     
     //   instance.apply_stack.push_front
     //     (application_t("account", context_stack.get_current().master));
     //   instance.parse();
-    //todo: instance.parse();
+    instance.parse();
 
     // }
     // TRACE_STOP(parsing_total, 1);

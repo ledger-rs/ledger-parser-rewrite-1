@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 /// acount.h
 
-struct AccountT<'a> {
+pub struct AccountT<'a> {
     // account_t *                    parent;
     parent: &'a AccountT<'a>,
     // string                         name;
