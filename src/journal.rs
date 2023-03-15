@@ -2,12 +2,24 @@
  * journal.cc
  */
 
-use crate::{context::{ParseContextT, ParseContextStackT}, textual::InstanceT};
+use crate::{context::{ParseContextT, ParseContextStackT}, textual::InstanceT, account::AccountT};
 
 ///journal_t
-pub struct JournalT {}
+pub struct JournalT<'a> {
+    master: Box<AccountT<'a>>,
+    bucket: Box<AccountT<'a>>,
+    // xacts
 
-impl JournalT {
+    // known_payees: 
+
+    current_context: &'a ParseContextT<'a>
+}
+
+impl JournalT<'_> {
+    pub fn new() -> Self {
+        Self { master: AccountT::new(), bucket: (), current_context: () }
+    }
+
     pub fn read(&self, context: &ParseContextStackT) -> usize {
         let mut count: usize = 0;
 

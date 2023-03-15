@@ -2,9 +2,10 @@ use std::collections::HashMap;
 
 /// acount.h
 
+//#[derive(Default, Debug)]
 pub struct AccountT<'a> {
     // account_t *                    parent;
-    parent: &'a AccountT<'a>,
+    parent: Option<&'a AccountT<'a>>,
     // string                         name;
     name: String,
     // optional<string>               note;
@@ -20,4 +21,17 @@ pub struct AccountT<'a> {
 
     // mutable string   _fullname;
     full_name: String,
+}
+
+impl AccountT<'_> {
+    pub fn new() -> Self {
+        Self {
+            parent: None,
+            name: String::new(),
+            note: None,
+            depth: 0,
+            accounts: HashMap::new(),
+            full_name: String::new(),
+        }
+    }
 }

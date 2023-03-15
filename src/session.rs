@@ -16,6 +16,10 @@ pub struct SessionT {
 }
 
 impl SessionT {
+    pub fn new() -> Self {
+        Self { journal: JournalT::new(), parsing_context: (), data_files: () }
+    }
+
     //   journal_t * read_journal(const path& pathname);
     // fn read_journal(&pathname: path) {
     //     todo!()

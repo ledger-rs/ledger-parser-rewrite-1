@@ -25,3 +25,13 @@ fn main() {
     status = 0;
 
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::main;
+
+    #[test]
+    fn test_run() {
+        main();
+    }
+}

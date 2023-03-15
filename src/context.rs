@@ -2,14 +2,14 @@
  * context.h
  */
 
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 use crate::journal::JournalT;
 
 const MAX_LINE: usize = 4096;
 
 /// parse_context_t
-pub struct ParseContextT {
+pub struct ParseContextT<'a> {
     // static const MAX_LINE: usize = 4096;
 
     // shared_ptr<std::istream> stream;
@@ -19,7 +19,7 @@ pub struct ParseContextT {
     // path                   current_directory;
     current_directory: PathBuf,
     // journal_t *            journal;
-    journal: JournalT,
+    journal: JournalT<'a>,
     // account_t *            master;
     // todo: master: AccountT
     // scope_t *              scope;
@@ -35,11 +35,11 @@ pub struct ParseContextT {
 }
 
 /// parse_context_stack_t
-pub struct ParseContextStackT {
-    parsing_context: Vec<ParseContextT>
+pub struct ParseContextStackT<'a> {
+    parsing_context: Vec<ParseContextT<'a>>
 }
 
-impl ParseContextStackT {
+impl ParseContextStackT<'_> {
     pub fn get_current(&self) -> &ParseContextT {
         //assert(! parsing_context.empty());
         assert!(!self.parsing_context.is_empty());

@@ -13,7 +13,9 @@ pub struct GlobalScopeT {
 
 impl GlobalScopeT {
     pub fn new() -> Self {
-        Self { session_ptr: todo!()  }
+//   epoch = CURRENT_TIME();
+
+        Self { session_ptr: SessionT::new()  }
     }
 
     pub fn session(&self) -> &SessionT {
